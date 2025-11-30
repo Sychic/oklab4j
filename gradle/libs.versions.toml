@@ -1,0 +1,9 @@
+[versions]
+ejml="0.41"
+
+[libraries]
+ejml-core = { module = "org.ejml:ejml-core", version.ref = "ejml" }
+ejml-ddense = { module = "org.ejml:ejml-ddense", version.ref = "ejml" }
+
+[bundles]
+ejml = ["ejml-core", "ejml-ddense"]
