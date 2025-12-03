@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    `maven-publish`
 }
 
 group = "dev.sychic"
@@ -23,4 +24,22 @@ tasks.test {
 
 java.toolchain {
     languageVersion = JavaLanguageVersion.of(8)
+}
+
+publishing {
+
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+    repositories {
+        maven {
+            url = uri("https://repo.sychic.dev")
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
 }
